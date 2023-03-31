@@ -6,6 +6,7 @@ import Registered from "@/components/Registered";
 import axios from "axios";
 import LogoAcampa from "public/assets/svgs/LogoAcampa";
 import ArrowLeft from "public/assets/svgs/ArrowLeft";
+import {url} from '../../utils/urlbase'
 
 function UserAdmin() {
   const [listSubscribers, setListSubscribers] = useState<any>();
@@ -92,7 +93,7 @@ function UserAdmin() {
   }
 
   return (
-    <DefaultLayout content="center" bgImage={"./assets/images/bg_site2.png"}>
+    <DefaultLayout content="center" bgImage={`${url()}/assets/images/bg_site2.png`}>
       <M.Box
         sx={{
           display: "flex",

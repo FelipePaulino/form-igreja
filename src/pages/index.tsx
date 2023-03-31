@@ -4,6 +4,7 @@ import * as M from "@mui/material"
 import { MaritalStatus, ApplicationForm, Header } from '@/components'
 import { useRouter } from 'next/router'
 import Footer from '@/components/Footer'
+import {url} from '../utils/urlbase'
 
 function Home() {
   const [maritalStatusSelect, setMaritalStatusSelect] = useState(false);
@@ -39,7 +40,7 @@ function Home() {
 
 
   return (
-    <DefaultLayout bgImage={"./assets/images/bg_site2.png"}>
+    <DefaultLayout bgImage={`${url()}assets/images/bg_site2.png`}>
       <Header />
       <M.Box
         sx={{
@@ -62,7 +63,7 @@ function Home() {
           {RenderingComponents()}
         </M.Grid>
         <M.Button
-          onClick={() => push('/listaDeInscritos')}
+          onClick={() => push('/ListaDeInscritos')}
           variant="contained"
           sx={{ backgroundColor: "primary.dark" }}
         >

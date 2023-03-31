@@ -7,6 +7,7 @@ import axios from "axios";
 import ArrowLeft from "public/assets/svgs/ArrowLeft";
 import { Header } from "@/components";
 import Footer from "@/components/Footer";
+import {url} from '../../utils/urlbase'
 
 function ListSubscribes() {
   const [listSubscribers, setListSubscribers] = useState<any>();
@@ -54,7 +55,7 @@ function ListSubscribes() {
   }
 
   return (
-    <DefaultLayout bgImage={"./assets/images/bg_site2.png"}>
+    <DefaultLayout bgImage={`${url()}/assets/images/bg_site2.png`}>
       <Header />
       <M.Box
         sx={{
