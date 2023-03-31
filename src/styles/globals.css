@@ -2,6 +2,11 @@ body {
   min-height: 100vh;
   overflow: auto;
   padding: 0;
+  background-color: #f2f5f7;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, i {
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
 
 header {
