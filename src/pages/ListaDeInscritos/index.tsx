@@ -22,13 +22,7 @@ function ListSubscribes() {
 
   const quantitySubscribes =
     listSubscribers && Object.values(listSubscribers).length.toString();
-  const paymentConfirmed =
-    listSubscribers &&
-    Object.values(listSubscribers)
-      ?.filter((item: any) => {
-        return item.fields.statusPagamento;
-      })
-      .length.toString();
+
 
   const setPerson = new Set();
 
@@ -39,6 +33,13 @@ function ListSubscribes() {
       setPerson.add(person.fields.nome);
       return !duplicatedPerson;
     });
+
+
+    const payment = filterPerson && filterPerson?.filter((item:any) =>{
+      return item?.fields?.statusPagamento
+    })
+
+
 
   const StyledTHeadCell = styled(M.TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -53,7 +54,7 @@ function ListSubscribes() {
     if (a.fields.nome > b.fields.nome) return 1;
     return 0;
   }
-
+console.log(filterPerson, 'filterPerson')
   return (
     <DefaultLayout bgImage={`${url()}/assets/images/bg_site2.png`}>
       <Header />
@@ -111,7 +112,7 @@ function ListSubscribes() {
               padding: "5px 10px",
             }}
           >
-            Total de Inscritos: {quantitySubscribes}
+            Total de Inscritos: {filterPerson && filterPerson.length}
           </M.Typography>
           <M.Typography
             variant="body1"
@@ -122,7 +123,7 @@ function ListSubscribes() {
               padding: "5px 10px",
             }}
           >
-            Pagamentos confirmados: {paymentConfirmed}
+            Pagamentos confirmados: {payment && payment.length}
           </M.Typography>
           <M.Typography
             variant="body1"

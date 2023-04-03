@@ -14,16 +14,11 @@ function UserAdmin() {
   const [logged, setLogged] = useState(false);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  // const [payment, setPayment] = useState()
 
   const quantitySubscribes =
     listSubscribers && Object.values(listSubscribers).length.toString();
-  const paymentConfirmed =
-    listSubscribers &&
-    Object.values(listSubscribers)
-      ?.filter((item: any) => {
-        return item.fields.statusPagamento;
-      })
-      .length.toString();
+
 
   const authentication = () => {
     if (
@@ -86,6 +81,27 @@ function UserAdmin() {
       return !duplicatedPerson;
     });
 
+    const payment = filterPerson && filterPerson?.filter((item:any) =>{
+      return item[1]?.fields?.statusPagamento
+    })
+
+
+
+//     useEffect(() => {
+//       const paymentConfirmed =
+//       filterPerson &&
+//         Object.values(filterPerson)
+//           ?.filter((item: any) => {
+//             return item?.fields?.statusPagamento;
+//           })
+//           .length.toString();
+  
+//           setPayment(paymentConfirmed)
+//     }, [filterPerson]);
+  
+
+
+// console.log(payment, 'payment')
   function compared(a: any, b: any) {
     if (a[1].fields.nome < b[1].fields.nome) return -1;
     if (a[1].fields.nome > b[1].fields.nome) return 1;
@@ -201,7 +217,7 @@ function UserAdmin() {
                   padding: "5px 10px",
                 }}
               >
-                Total de Inscritos: {quantitySubscribes}
+                Total de Inscritos: {filterPerson && filterPerson.length}
               </M.Typography>
               <M.Typography
                 variant="body1"
@@ -212,7 +228,7 @@ function UserAdmin() {
                   padding: "5px 10px",
                 }}
               >
-                Pagamentos confirmados: {paymentConfirmed}
+                Pagamentos confirmados: {payment && payment.length}
               </M.Typography>
             </M.Box>
             <M.TableContainer
